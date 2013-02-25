@@ -61,6 +61,33 @@ namespace PseudonymMatching.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something went wrong.
+        /// </summary>
+        internal static string Form1_btnOpenCsv_Click_Something_went_wrong {
+            get {
+                return ResourceManager.GetString("Form1_btnOpenCsv_Click_Something_went_wrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        internal static string Form1_btnOpenPseudonymFile_Click_Completed {
+            get {
+                return ResourceManager.GetString("Form1_btnOpenPseudonymFile_Click_Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSV|*.csv.
+        /// </summary>
+        internal static string Form1_btnOpenPseudonymFile_Click_CSV___csv {
+            get {
+                return ResourceManager.GetString("Form1_btnOpenPseudonymFile_Click_CSV___csv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid File.
         /// </summary>
         internal static string Form1_btnOpenXML_Click_Invalid_File {

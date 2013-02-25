@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml;
 using PseudonymMatching.Properties;
 
 namespace PseudonymMatching
@@ -30,18 +23,19 @@ namespace PseudonymMatching
 
         private void btnOpenCsv_Click(object sender, EventArgs e)
         {
-            var comma = ",";
-            var tablename = "Persons";
+            const string comma = ",";
+            const string tablename = "Persons";
             var dataset = new DataSet();
             using (var openFileDialog1 = new OpenFileDialog
                 {
-                    Filter = "CSV|*.csv",
+                    Filter = Resources.Form1_btnOpenPseudonymFile_Click_CSV___csv,
                     FilterIndex = 1
                 })
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     var filename = openFileDialog1.FileName;
+                    if (filename == null) throw new ArgumentNullException("filename");
                     var sr = new StreamReader(filename);
                     File.ReadAllText(openFileDialog1.FileName);
                     dataset.Tables.Add(tablename);
@@ -65,7 +59,7 @@ namespace PseudonymMatching
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong");
+                    MessageBox.Show(Resources.Form1_btnOpenCsv_Click_Something_went_wrong);
                 }
             }
         }
@@ -103,12 +97,12 @@ namespace PseudonymMatching
 
         private void btnOpenPseudonymFile_Click(object sender, EventArgs e)
         {
-            var comma = ",";
-            var tablename = "Pseudonyms";
+            const string comma = ",";
+            const string tablename = "Pseudonyms";
             var dataset = new DataSet();
             using (var openFileDialog2 = new OpenFileDialog
                 {
-                    Filter = "CSV|*.csv",
+                    Filter = Resources.Form1_btnOpenPseudonymFile_Click_CSV___csv,
                     FilterIndex = 1
                 })
             {
@@ -132,43 +126,61 @@ namespace PseudonymMatching
                     }
                     //var searchValueArray = searchValue.Split(",".ToCharArray());
 
+                    var dv = new DataView {Table = dataset.Tables[tablename]};
 
-                    foreach (var rowD in dataset.Tables[tablename].Rows)
+                    for (var i = 0; i < dv.Table.Rows.Count;i++)
                     {
-                        var baseName = dataset.Tables[tablename].Columns["Basename"];
-                        var possibleMatches =
-                            dataset.Tables[tablename].Columns["Pseudonyms"].ToString().Split("|".ToCharArray());
+                        //var baseName = dataset.Tables[tablename].Columns["Basename"];
+
+                        var baseName = dv.Table.Rows[i][0].ToString().Replace("\n","");
+                        var possibleMatches = dv.Table.Rows[i][1].ToString().Split("|".ToCharArray());
 
                         var rowsFound = new List<int>();
 
-                        foreach (var pos in possibleMatches)
+                        for (var index1 = 0; index1 < possibleMatches.Length; index1++)
                         {
-                            for (var i = 0; i < dataGridView1.Rows.Count; i++)
+                            var pos = possibleMatches[index1];
+                            for (var l = 0; l < dataGridView1.Rows.Count; l++)
                             {
                                 var row = dataGridView1.Rows[i];
                                 var value = row.Cells[0].Value;
-                                if (value != null && value.ToString().Replace("\n", "") == pos.ToString())
-                                {
-                                    i = row.Index;
-                                    //MessageBox.Show(i.ToString());
-                                    rowsFound.Add(i);
-
-                                }
-
+                                if (value == null || value.ToString().Replace("\n", "") != pos) continue;
+                                i = row.Index;
+                                //MessageBox.Show(i.ToString());
+                                rowsFound.Add(i);
                             }
                             for (var index = 0; index < rowsFound.Count; index++)
                             {
                                 var i1 = rowsFound[index];
-                                MessageBox.Show(rowsFound[index].ToString());
+                                MessageBox.Show(i1.ToString());
+
+                                // Magic time
+                                
+                                const string finalTable = "Results";
+                                var finalDataset = new DataSet();
+                                finalDataset.Tables.Add(finalTable);
+                                finalDataset.Tables[finalTable].Columns.Add("OriginalName");
+                                finalDataset.Tables[finalTable].Columns.Add("Gender");
+                                finalDataset.Tables[finalTable].Columns.Add("RowId");
+                                finalDataset.Tables[finalTable].Columns.Add("BaseName");
+                                finalDataset.Tables[finalTable].Columns.Add("Pseudonym");
+
+                                var values = "";
+
+                                // +i1 + baseName + pos;
+                                
+
+                                dataset.Tables[tablename].Rows.Add(values);
+
                             }
                         }
                     }
-                    MessageBox.Show("Completed");
+                    MessageBox.Show(Resources.Form1_btnOpenPseudonymFile_Click_Completed);
 
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong");
+                    MessageBox.Show(Resources.Form1_btnOpenCsv_Click_Something_went_wrong);
                 }
             }
 
