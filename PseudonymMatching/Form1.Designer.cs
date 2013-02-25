@@ -32,7 +32,8 @@
             this.btnOpenCsv = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnCheckPsudonym = new System.Windows.Forms.Button();
-            this.txtPseudonym = new System.Windows.Forms.TextBox();
+            this.btnOpenPseudonymFile = new System.Windows.Forms.Button();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,19 +65,26 @@
             this.btnCheckPsudonym.UseVisualStyleBackColor = true;
             this.btnCheckPsudonym.Click += new System.EventHandler(this.btnCheckPsudonym_Click);
             // 
-            // txtPseudonym
+            // btnOpenPseudonymFile
             // 
-            this.txtPseudonym.Location = new System.Drawing.Point(468, 457);
-            this.txtPseudonym.Name = "txtPseudonym";
-            this.txtPseudonym.Size = new System.Drawing.Size(100, 20);
-            this.txtPseudonym.TabIndex = 3;
+            this.btnOpenPseudonymFile.Location = new System.Drawing.Point(369, 454);
+            this.btnOpenPseudonymFile.Name = "btnOpenPseudonymFile";
+            this.btnOpenPseudonymFile.Size = new System.Drawing.Size(166, 23);
+            this.btnOpenPseudonymFile.TabIndex = 3;
+            this.btnOpenPseudonymFile.Text = "Open Pseodonym File";
+            this.btnOpenPseudonymFile.UseVisualStyleBackColor = true;
+            this.btnOpenPseudonymFile.Click += new System.EventHandler(this.btnOpenPseudonymFile_Click);
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 500);
-            this.Controls.Add(this.txtPseudonym);
+            this.Controls.Add(this.btnOpenPseudonymFile);
             this.Controls.Add(this.btnCheckPsudonym);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnOpenCsv);
@@ -85,7 +93,6 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -95,7 +102,8 @@
         private System.Windows.Forms.Button btnOpenCsv;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnCheckPsudonym;
-        private System.Windows.Forms.TextBox txtPseudonym;
+        private System.Windows.Forms.Button btnOpenPseudonymFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
 
