@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -72,38 +73,67 @@ namespace PseudonymMatching
 
         private void btnCheckPsudonym_Click(object sender, EventArgs e)
         {
-            var pn = txtPseudonym.Text.ToString(CultureInfo.InvariantCulture);
+                // Sometimes ideas need to be rethought
+                ////if (pn == "Richard")
+                //{
+                //    var possibilities = "KHAOLA";
 
-            if (String.IsNullOrWhiteSpace(pn))
-            {
-                MessageBox.Show("Invalid Name");
-            }
-            else
-            {
-                //if (pn == "Richard")
+                //    var posarray = possibilities.Split(",".ToCharArray());
+                //    //}
+
+
+                //    foreach (var name in posarray)
+                //    {
+                //        if (dataGridView1.Rows == null) continue;
+                //        var matchedRows = dataGridView1.Rows
+                //                                       .Cast<DataGridViewRow>()
+                //                                       .Select(r =>
+                //                                           {
+                //                                               if (r.Cells != null)
+                //                                               {
+                //                                                   var value = r.Cells["Forename"].Value;
+                //                                                   if (value == null)
+                //                                                       throw new ArgumentNullException("value");
+                //                                                   return value ?? null;
+                //                                               }
+                //                                           })
+                //                                       .Where(v => v != null && v.ToString().Replace("\"","") == name)
+                //                                       .ToList();
+
+
+                //        var singleOrDefault = matchedRows.SingleOrDefault();
+                //        if (singleOrDefault != null)
+                //        {
+                //            var s = singleOrDefault.ToString();
+                //            Debug.Print(s);
+
+                            
+                //        }
+                //        MessageBox.Show("Completed");
+                //    }
+
+                var searchValue = "A";
+                //var rowIndex = -1;
+                var rowsFound = new List<int>();
+                for (var i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    var possibilities = "Richard,Dick,Dicky,Dickie,Rich,Rick,Richy";
-
-                    var posarray = possibilities.Split(",".ToCharArray());
-                    //}
-
-
-                    foreach (var name in posarray)
+                    var row = dataGridView1.Rows[i];
+                    var value = row.Cells[0].Value;
+                    if (value != null && value.ToString().Replace("\n","") == searchValue)
                     {
-                        var matchedRows = dataGridView1.Rows
-                                                       .Cast<DataGridViewRow>()
-                                                       .Select(r =>
-                                                           {
-                                                               var value = r.Cells["Forename"].Value;
-                                                               return value ?? null;
-                                                           })
-                                                       .Where(v => v != null && v.ToString() == name)
-                                                       .ToList();
+                        i = row.Index;
+                        //MessageBox.Show(i.ToString());
+                        rowsFound.Add(i);
+                        
                     }
 
                 }
-            }
+                for (var index = 0; index < rowsFound.Count; index++)
+                {
+                    var i1 = rowsFound[index];
+                    MessageBox.Show(rowsFound[index].ToString());
+                }
+            MessageBox.Show("Completed");
         }
-    }
-
+      }
 }
