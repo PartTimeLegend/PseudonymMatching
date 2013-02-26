@@ -124,5 +124,14 @@ namespace PseudonymMatching.Properties {
                 return ResourceManager.GetString("Form1_btnOpenXML_Click_Try_again", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saved.
+        /// </summary>
+        internal static string frmModify_btnSave_Click_Saved {
+            get {
+                return ResourceManager.GetString("frmModify_btnSave_Click_Saved", resourceCulture);
+            }
+        }
     }
 }

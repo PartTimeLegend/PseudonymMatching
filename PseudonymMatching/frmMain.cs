@@ -226,7 +226,8 @@ namespace PseudonymMatching
 
         private void btnModifyPseudonymFile_Click(object sender, EventArgs e)
         {
-
+            var foo = new frmModify();
+            foo.Show();
         }
     }
 }
