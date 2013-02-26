@@ -137,42 +137,48 @@ namespace PseudonymMatching
 
                         var rowsFound = new List<int>();
 
+                        string pos;
                         for (var index1 = 0; index1 < possibleMatches.Length; index1++)
                         {
-                            var pos = possibleMatches[index1];
+                            pos = possibleMatches[index1];
                             for (var l = 0; l < dataGridView1.Rows.Count; l++)
                             {
-                                var row = dataGridView1.Rows[i];
+                                var row = dataGridView1.Rows[l];
                                 var value = row.Cells[0].Value;
-                                if (value == null || value.ToString().Replace("\n", "") != pos) continue;
-                                i = row.Index;
-                                //MessageBox.Show(i.ToString());
-                                rowsFound.Add(i);
+                                if (value != null &&
+                                    (value.ToString().Replace("\n", "") == pos.ToUpper()))
+                                {
+                                    i = row.Index;
+                                    //MessageBox.Show(i.ToString());
+                                    rowsFound.Add(i);
+                                }
                             }
-                            for (var index = 0; index < rowsFound.Count; index++)
-                            {
-                                var i1 = rowsFound[index];
-                                MessageBox.Show(i1.ToString());
+                        }
+                        foreach (var i1 in rowsFound)
+                        {
+                            MessageBox.Show(i1.ToString());
 
-                                // Magic time
-                                
-                                const string finalTable = "Results";
-                                var finalDataset = new DataSet();
-                                finalDataset.Tables.Add(finalTable);
-                                finalDataset.Tables[finalTable].Columns.Add("OriginalName");
-                                finalDataset.Tables[finalTable].Columns.Add("Gender");
-                                finalDataset.Tables[finalTable].Columns.Add("RowId");
-                                finalDataset.Tables[finalTable].Columns.Add("BaseName");
-                                finalDataset.Tables[finalTable].Columns.Add("Pseudonym");
+                            // Magic time
 
-                                var values = "";
+                            const string finalTable = "Results";
+                            var finalDataset = new DataSet();
+                            finalDataset.Tables.Add(finalTable);
+                            finalDataset.Tables[finalTable].Columns.Add("OriginalName");
+                            finalDataset.Tables[finalTable].Columns.Add("Gender");
+                            finalDataset.Tables[finalTable].Columns.Add("RowId");
+                            finalDataset.Tables[finalTable].Columns.Add("BaseName");
+                            finalDataset.Tables[finalTable].Columns.Add("Pseudonym");
 
-                                // +i1 + baseName + pos;
-                                
+                            var values = "";
 
-                                dataset.Tables[tablename].Rows.Add(values);
+                            //var originalName = ;
+                            var gender = "";
+                            var rowId = i1 + 1;
+                            //baseName
+                            pos = "";
 
-                            }
+
+                            dataset.Tables[tablename].Rows.Add(values);
                         }
                     }
                     MessageBox.Show(Resources.Form1_btnOpenPseudonymFile_Click_Completed);
