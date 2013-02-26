@@ -70,6 +70,26 @@ namespace PseudonymMatching.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// Be aware that rows start at 0 and if viewed in Excel you need to increase by 1 as Excel is 1 based.
+        /// </summary>
+        internal static string Form1_btnOpenPseudonymFile_Click_ {
+            get {
+                return ResourceManager.GetString("Form1_btnOpenPseudonymFile_Click_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A possible pseudonym has been discovered in the original data on row .
+        /// </summary>
+        internal static string Form1_btnOpenPseudonymFile_Click_A_possible_pseudonym_has_been_discovered_in_the_original_data_on_row_ {
+            get {
+                return ResourceManager.GetString("Form1_btnOpenPseudonymFile_Click_A_possible_pseudonym_has_been_discovered_in_the_" +
+                        "original_data_on_row_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Completed.
         /// </summary>
         internal static string Form1_btnOpenPseudonymFile_Click_Completed {

@@ -1,6 +1,6 @@
 ﻿namespace PseudonymMatching
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -31,15 +31,16 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnOpenCsv = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCheckPsudonym = new System.Windows.Forms.Button();
             this.btnOpenPseudonymFile = new System.Windows.Forms.Button();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnModifyPseudonymFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOpenCsv
             // 
-            this.btnOpenCsv.Location = new System.Drawing.Point(114, 455);
+            this.btnOpenCsv.Location = new System.Drawing.Point(112, 448);
             this.btnOpenCsv.Name = "btnOpenCsv";
             this.btnOpenCsv.Size = new System.Drawing.Size(98, 23);
             this.btnOpenCsv.TabIndex = 0;
@@ -55,19 +56,9 @@
             this.dataGridView1.Size = new System.Drawing.Size(893, 424);
             this.dataGridView1.TabIndex = 1;
             // 
-            // btnCheckPsudonym
-            // 
-            this.btnCheckPsudonym.Location = new System.Drawing.Point(609, 455);
-            this.btnCheckPsudonym.Name = "btnCheckPsudonym";
-            this.btnCheckPsudonym.Size = new System.Drawing.Size(148, 23);
-            this.btnCheckPsudonym.TabIndex = 2;
-            this.btnCheckPsudonym.Text = "Check Pseudonym";
-            this.btnCheckPsudonym.UseVisualStyleBackColor = true;
-            this.btnCheckPsudonym.Click += new System.EventHandler(this.btnCheckPsudonym_Click);
-            // 
             // btnOpenPseudonymFile
             // 
-            this.btnOpenPseudonymFile.Location = new System.Drawing.Point(369, 454);
+            this.btnOpenPseudonymFile.Location = new System.Drawing.Point(356, 448);
             this.btnOpenPseudonymFile.Name = "btnOpenPseudonymFile";
             this.btnOpenPseudonymFile.Size = new System.Drawing.Size(166, 23);
             this.btnOpenPseudonymFile.TabIndex = 3;
@@ -79,18 +70,38 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
-            // Form1
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(0, 477);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(938, 23);
+            this.progressBar1.TabIndex = 4;
+            // 
+            // btnModifyPseudonymFile
+            // 
+            this.btnModifyPseudonymFile.Location = new System.Drawing.Point(634, 448);
+            this.btnModifyPseudonymFile.Name = "btnModifyPseudonymFile";
+            this.btnModifyPseudonymFile.Size = new System.Drawing.Size(158, 23);
+            this.btnModifyPseudonymFile.TabIndex = 5;
+            this.btnModifyPseudonymFile.Text = "Modify Pseudonym File";
+            this.btnModifyPseudonymFile.UseVisualStyleBackColor = true;
+            this.btnModifyPseudonymFile.Click += new System.EventHandler(this.btnModifyPseudonymFile_Click);
+            // 
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 500);
+            this.Controls.Add(this.btnModifyPseudonymFile);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnOpenPseudonymFile);
-            this.Controls.Add(this.btnCheckPsudonym);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnOpenCsv);
-            this.Name = "Form1";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Pseudonym Matching";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -101,9 +112,10 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnOpenCsv;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnCheckPsudonym;
         private System.Windows.Forms.Button btnOpenPseudonymFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button btnModifyPseudonymFile;
     }
 }
 

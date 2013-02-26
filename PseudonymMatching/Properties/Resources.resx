@@ -129,4 +129,11 @@
   <data name="Form1_btnOpenPseudonymFile_Click_Completed" xml:space="preserve">
     <value>Completed</value>
   </data>
+  <data name="Form1_btnOpenPseudonymFile_Click_A_possible_pseudonym_has_been_discovered_in_the_original_data_on_row_" xml:space="preserve">
+    <value>A possible pseudonym has been discovered in the original data on row </value>
+  </data>
+  <data name="Form1_btnOpenPseudonymFile_Click_" xml:space="preserve">
+    <value>.
+ Be aware that rows start at 0 and if viewed in Excel you need to increase by 1 as Excel is 1 based</value>
+  </data>
 </root>
