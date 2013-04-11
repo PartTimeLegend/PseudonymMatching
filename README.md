@@ -41,3 +41,5 @@ The pseudonyms are pipe seperated (|).
 The pseudonyms can be changed in the Modify form, the original file is loaded into the datagridview and can be added to, altered and deleted. You can then save to a new CSV.
 
 [![Build Status](https://travis-ci.org/PartTimeLegend/PseudonymMatching.png?branch=master)](https://travis-ci.org/PartTimeLegend/PseudonymMatching)
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=parttimelegend&url=https://github.com/PartTimeLegend/PseudonymMatching&title=Pseudonym Matching&language=&tags=github&category=software) 
